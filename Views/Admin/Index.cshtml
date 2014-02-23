@@ -1,0 +1,26 @@
+﻿@model List<MainBit.MarkupTags.Models.MarkupTagRecord>
+<h1>@Html.TitleForPage(T("Markup Tags").ToString())</h1>
+<div class="add-code">
+    @Html.ActionLink(T("Create").ToString(), "Create")
+</div>
+@ViewBag.EmptyMessage
+@if (Model != null && Model.Count > 0)
+{
+    <table class="codes-list">
+        <tr>
+            <th>@T("Title")</th>
+            <th>@T("Enable")</th>
+            <th class="code-action">@T("Actions")</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Enable</td>
+            <td>
+                <a href="@Url.Action("Edit", "Admin", new { Id = item.Id })">@T("Edit")</a> | <a href="@Url.Action("Delete", "Admin", new { Id = item.Id })">@T("Remove")</a>
+            </td>
+        </tr>
+        }
+    </table>
+}

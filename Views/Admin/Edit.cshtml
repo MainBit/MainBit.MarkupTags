@@ -1,0 +1,32 @@
+﻿@model MainBit.MarkupTags.Models.MarkupTagRecord
+
+<h1>@Html.TitleForPage(T("Edit ownership verification code").ToString())</h1>
+<div class="add-code">
+@Html.ActionLink("Back to list", "Index")
+</div>
+@using (Html.BeginFormAntiForgeryPost())
+{
+    @Html.ValidationSummary()
+    <fieldset>
+        <p>
+            <label for="Title">@T("Title")</label>
+             @Html.EditorFor(m => m.Title)
+        </p>
+        <p>
+            <label for="Content">@T("Content")</label>
+            @Html.TextAreaFor(m => m.Content, new { @class = "textMedium", rows = 20 })
+        </p>
+        <p>
+            <label for="Enable">@T("Position")</label>
+            <select id="Position" name="Position">
+                <option value="Head"@(Model.Position == "Head" ? " selected=\"selected\"" : "")>Head</option>
+                <option value="Tail"@(Model.Position == "Tail" ? " selected=\"selected\"" : "")>Tail</option>
+            </select>
+        </p>
+        <p>
+            <label for="Enable">@T("Enable")</label>
+            @Html.CheckBoxFor(m => m.Enable)
+        </p>
+        <input type="submit" value="Save" />
+    </fieldset>
+}

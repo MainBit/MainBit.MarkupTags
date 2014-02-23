@@ -1,0 +1,31 @@
+﻿@model MainBit.MarkupTags.ViewModels.MarkupTagViewModel
+<h1>@Html.TitleForPage(T("Create new markup tag").ToString())</h1>
+<div class="add-code">
+@Html.ActionLink("Back to list", "Index")
+</div>
+@using (Html.BeginFormAntiForgeryPost())
+{
+    @Html.ValidationSummary()
+    <fieldset>
+        <p>
+            <label for="Title">@T("Title")</label>
+            <input id="Title" name="Title" type="text" />
+        </p>
+        <p>
+            <label for="Content">@T("Content")</label>
+            <textarea id="Content" name="Content" class="textMedium" rows="20" cols="60"></textarea>
+        </p>
+        <p>
+            <label for="Enable">@T("Position")</label>
+            <select id="Position" name="Position">
+                <option value="Head" selected="selected">Head</option>
+                <option value="Tail">Tail</option>
+            </select>
+        </p>
+        <p>
+            <label for="Enable">@T("Enable")</label>
+            @Html.CheckBoxFor(m => m.Enable)
+        </p>
+        <input type="submit" value="Save" />
+    </fieldset>
+}

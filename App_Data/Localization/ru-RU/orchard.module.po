@@ -1,0 +1,30 @@
+﻿# Orchard resource strings - ru-RU
+# Copyright (c) 2012 neTp9c
+
+#| msgid "Markup Tags"
+msgid "Markup Tags"
+msgstr "Теги разметки"
+
+#| msgid "Edit"
+msgid "Edit"
+msgstr "Редактировать"
+
+#| msgid "Remove"
+msgid "Remove"
+msgstr "Удалить"
+
+#| msgid "Create"
+msgid "Create"
+msgstr "Создать"
+
+#| msgid "Title"
+msgid "Title"
+msgstr "Заголовок"
+
+#| msgid "Enable"
+msgid "Enable"
+msgstr "Активен"
+
+#| msgid "Actions"
+msgid "Actions"
+msgstr "Действия"
