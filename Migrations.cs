@@ -23,5 +23,14 @@ namespace MainBit.MarkupTags
 
             return 1;
         }
+
+        public int UpdateFrom1()
+        {
+
+            SchemaBuilder.AlterTable("MarkupTagRecord", table => table
+                .AddColumn("Zone", DbType.String));
+
+            return 2;
+        }
     }
 }

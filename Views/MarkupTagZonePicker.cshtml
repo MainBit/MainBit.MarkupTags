@@ -1,0 +1,10 @@
+﻿@using System.Web.Mvc;
+@{
+    var zones = new List<string>(new[] { "Head", "BeforeBody", "Tail" });
+    var currentValue = Model.Value;
+    var options = zones.Select(zone => new SelectListItem { Text = zone, Value = zone, Selected = zone == currentValue });
+}
+<p>
+    <label for="Zone">@T("Zone")</label>
+    @Html.DropDownList("Zone", options)
+</p>

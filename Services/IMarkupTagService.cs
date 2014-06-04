@@ -9,8 +9,8 @@ namespace MainBit.MarkupTags.Services
         MarkupTagRecord Get(int Id);
         List<MarkupTagRecord> Get();
         List<MarkupTagRecord> Get(bool Enable);
-        bool Set(int Id, string Title, string Content, string Position, bool Enable);
+        bool Set(int id, string title, string content, string zone, string position, bool enable);
         bool Delete(int Id);
-        void Add(string Title, string Content, string Position, bool Enable);
+        void Add(string title, string content, string zone, string position, bool enable);
     }
 }

@@ -54,20 +54,32 @@ namespace MainBit.MarkupTags.Filters
             //IResourceManager resourceManager = _workContextAccessor.GetContext().Resolve<IResourceManager>(); //получаем экземпляр ресурс менеджера, он нужен для работы с метой, скриптами и стилями
             var context = _workContextAccessor.GetContext();
             var head = context.Layout.Head;
+            var beforeBody = context.Layout.BeforeBody;
             var tail = context.Layout.Tail;
+            
+            
 
             foreach (var item in tags)
             {
-                switch (item.Position)
+                //// dont work
+                //var shape = context.Layout.GetType().GetProperty(item.Position).GetValue(context.Layout, null);
+                //shape.Add(new MvcHtmlString(item.Content));
+                
+                switch (item.Zone)
                 {
-                    case "Head":
+                    case "head":
                         {
-                            head.Add(new MvcHtmlString(item.Content));
+                            head.Add(new MvcHtmlString(item.Content), string.IsNullOrEmpty(item.Position) ? null : item.Position);
+                        }
+                        break;
+                    case "BeforeBody":
+                        {
+                            beforeBody.Add(new MvcHtmlString(item.Content), string.IsNullOrEmpty(item.Position) ? null : item.Position);
                         }
                         break;
                     case "Tail":
                         {
-                            tail.Add(new MvcHtmlString(item.Content));
+                            tail.Add(new MvcHtmlString(item.Content), string.IsNullOrEmpty(item.Position) ? null : item.Position);
                         }
                         break;
                     default:

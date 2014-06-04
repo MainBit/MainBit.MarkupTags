@@ -16,17 +16,15 @@
             <label for="Content">@T("Content")</label>
             @Html.TextAreaFor(m => m.Content, new { @class = "textMedium", rows = 20 })
         </p>
+        @Display.MarkupTagZonePicker(Value: Model.Zone)
         <p>
             <label for="Enable">@T("Position")</label>
-            <select id="Position" name="Position">
-                <option value="Head"@(Model.Position == "Head" ? " selected=\"selected\"" : "")>Head</option>
-                <option value="Tail"@(Model.Position == "Tail" ? " selected=\"selected\"" : "")>Tail</option>
-            </select>
+            @Html.TextBoxFor(m => m.Position)
         </p>
         <p>
             <label for="Enable">@T("Enable")</label>
             @Html.CheckBoxFor(m => m.Enable)
         </p>
-        <input type="submit" value="Save" />
+        <input type="submit" value="Save" class="button" />
     </fieldset>
 }

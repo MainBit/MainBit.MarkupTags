@@ -5,7 +5,7 @@ using Orchard.Security;
 using Orchard.UI.Admin;
 using Orchard.UI.Notify;
 using MainBit.MarkupTags.Services;
-using MainBit.MarkupTags.ViewModels;
+using MainBit.MarkupTags.Models;
 
 namespace MainBit.MarkupTags.Controllers
 {
@@ -41,19 +41,19 @@ namespace MainBit.MarkupTags.Controllers
             if (!Services.Authorizer.Authorize(StandardPermissions.SiteOwner, T("Cannot manage opt markup tags")))
                 return new HttpUnauthorizedResult();
 
-            return View();
+            return View(new MarkupTagRecord());
         }
 
         [HttpPost]
-        public ActionResult Create(MarkupTagViewModel model)
+        public ActionResult Create(MarkupTagRecord model)
         {
             if (!Services.Authorizer.Authorize(StandardPermissions.SiteOwner, T("Cannot manage opt markup tags")))
                 return new HttpUnauthorizedResult();
 
             if (!ModelState.IsValid)
-                return View();
+                return View(model);
 
-            _markupTagService.Add(model.Title, model.Content, model.Position, model.Enable);
+            _markupTagService.Add(model.Title, model.Content, model.Zone, model.Position, model.Enable);
             Services.Notifier.Information(T("MainBit Markup Tag successfully added"));
 
             return RedirectToAction("Index");
@@ -69,14 +69,14 @@ namespace MainBit.MarkupTags.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int Id, MarkupTagViewModel model)
+        public ActionResult Edit(int Id, MarkupTagRecord model)
         {
             if (!Services.Authorizer.Authorize(StandardPermissions.SiteOwner, T("Cannot manage MainBit Markup Tags")))
                 return new HttpUnauthorizedResult();
 
             if (!ModelState.IsValid)
                 return View(_markupTagService.Get(Id));
-            if(_markupTagService.Set(Id, model.Title, model.Content, model.Position, model.Enable))
+            if (_markupTagService.Set(Id, model.Title, model.Content, model.Zone, model.Position, model.Enable))
             {
                 Services.Notifier.Information(T("MainBit Markup Tag successfully saved"));
             }

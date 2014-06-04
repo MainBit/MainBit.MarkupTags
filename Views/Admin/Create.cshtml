@@ -1,10 +1,11 @@
-﻿@model MainBit.MarkupTags.ViewModels.MarkupTagViewModel
+﻿@model MainBit.MarkupTags.Models.MarkupTagRecord
 <h1>@Html.TitleForPage(T("Create new markup tag").ToString())</h1>
 <div class="add-code">
 @Html.ActionLink("Back to list", "Index")
 </div>
 @using (Html.BeginFormAntiForgeryPost())
 {
+    <input id="Id" name="Id" type="hidden" value="0" />
     @Html.ValidationSummary()
     <fieldset>
         <p>
@@ -15,17 +16,15 @@
             <label for="Content">@T("Content")</label>
             <textarea id="Content" name="Content" class="textMedium" rows="20" cols="60"></textarea>
         </p>
+        @Display.MarkupTagZonePicker(Value: Model.Zone)
         <p>
-            <label for="Enable">@T("Position")</label>
-            <select id="Position" name="Position">
-                <option value="Head" selected="selected">Head</option>
-                <option value="Tail">Tail</option>
-            </select>
+            <label for="Position">@T("Position")</label>
+            @Html.TextBoxFor(m => m.Position)
         </p>
         <p>
             <label for="Enable">@T("Enable")</label>
             @Html.CheckBoxFor(m => m.Enable)
         </p>
-        <input type="submit" value="Save" />
+        <input type="submit" value="Save" class="button" />
     </fieldset>
 }

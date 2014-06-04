@@ -34,15 +34,16 @@ namespace MainBit.MarkupTags.Services
             return _repository.Table.Where(p => p.Enable == Enable).ToList();
         }
 
-        public bool Set(int Id, string Title, string Content, string Position, bool Enable)
+        public bool Set(int id, string title, string content, string zone, string position, bool enable)
         {
-            var record = Get(Id);
+            var record = Get(id);
             if (record != null)
             {
-                record.Title = Title;
-                record.Content = Content;
-                record.Position = Position;
-                record.Enable = Enable;
+                record.Title = title;
+                record.Content = content;
+                record.Zone = zone;
+                record.Position = position;
+                record.Enable = enable;
                 _signals.Trigger("MainBit.MarkupTags.MarkupTagRecordChanged");
                 return true;
             }
@@ -61,14 +62,15 @@ namespace MainBit.MarkupTags.Services
             return false;
         }
 
-        public void Add(string Title, string Content, string Position, bool Enable)
+        public void Add(string title, string content, string zone, string position, bool enable)
         {
             _repository.Create(new MarkupTagRecord 
             { 
-                Title = Title, 
-                Content = Content,
-                Position = Position,
-                Enable = Enable
+                Title = title, 
+                Content = content,
+                Zone = zone,
+                Position = position,
+                Enable = enable
             });
             _signals.Trigger("MainBit.MarkupTags.MarkupTagRecordChanged");
         }
