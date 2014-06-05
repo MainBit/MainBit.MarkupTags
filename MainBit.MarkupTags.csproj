@@ -97,6 +97,7 @@
     <Compile Include="Models\MarkupTag.cs" />
     <Compile Include="Services\IMarkupTagService.cs" />
     <Compile Include="Services\MarkupTagService.cs" />
+    <Compile Include="Shapes\LayoutShape.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Create.cshtml" />

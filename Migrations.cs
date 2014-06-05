@@ -17,7 +17,7 @@ namespace MainBit.MarkupTags
                 .Column("Id", DbType.Int32, column => column.PrimaryKey().Identity())
                 .Column("Title", DbType.String, column => column.NotNull())
                 .Column("Content", DbType.String, column => column.NotNull().Unlimited())
-                .Column("Position", DbType.String, column => column.NotNull())
+                .Column("Position", DbType.String)
                 .Column("Enable", DbType.Boolean, column => column.NotNull())
             );
 
