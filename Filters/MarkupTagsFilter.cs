@@ -67,7 +67,7 @@ namespace MainBit.MarkupTags.Filters
                 
                 switch (item.Zone)
                 {
-                    case "head":
+                    case "Head":
                         {
                             head.Add(new MvcHtmlString(item.Content), string.IsNullOrEmpty(item.Position) ? null : item.Position);
                         }
