@@ -1,11 +1,10 @@
-﻿Name: MainBit.MarkupTags
-AntiForgery: enabled
+﻿AntiForgery: enabled
 Author: neTp9c
 Website: http://mainbit.com
-Version: 1.1
-OrchardVersion: 1.8
+Version: 1.9.1
+OrchardVersion: 1.9.1
 Description: Description for the module
-Category: SEO
 Features:
     MainBit.MarkupTags:
         Description: Add markup tags to view
+		Category: SEO
